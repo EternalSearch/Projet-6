@@ -22,6 +22,8 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	background: #FFFEF8;
+
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -56,7 +58,8 @@ body {
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 50px 0;
+	padding:50px;
 }
 section {
 	margin: 50px 0
@@ -125,6 +128,33 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+.portfoliobuttons_filter{
+
+	display: flex;
+	flex: 1;
+	width: 100%;
+	justify-content: center;
+	gap:10px;
+	margin: 50px 0;
+	
+
+}
+.filterbutton {
+	font-family: 'Syne';
+	font-weight: 700;
+	border: 1px solid #1D6154; 
+	text-align: center;
+	border-radius: 40px;
+	padding: 10px;
+	color: #1D6154;
+	min-width: 75px;
+	
+}
+.filterbutton:hover {
+	color: white;
+	background-color: #1D6154;
+}
+
 .gallery {
 	width: 100%;
 	display: grid;
@@ -178,6 +208,7 @@ input[type="submit"]{
 	width: 180px;
 	text-align: center;
 	border-radius: 60px ;
+	
 }
 
 footer nav ul {
@@ -185,4 +216,40 @@ footer nav ul {
 	justify-content: flex-end;
 	margin: 2em
 }
+/* LoginPage */
 
+.log {
+	font-family: 'Syne';
+	font-weight: 700;
+	color: #1D6154;
+	width: 100px;
+	height: 36px;
+
+
+
+
+}
+.login {
+	width: 100%;
+	gap: 5px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+}
+.login input {
+	margin-bottom:15px;
+	margin-top: 0px;
+	border: none;
+	box-shadow: 0px 4px 14px #000000;
+	width: 379px;
+	height: 51px;
+}
+.essai{
+	box-shadow:none;
+}
+.login p {
+	text-decoration:underline;
+	margin-top: 0px;
+
+ }
