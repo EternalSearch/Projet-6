@@ -1,3 +1,7 @@
+// Récupération du token via localstorage
+const token = window.localStorage.getItem("token");
+console.log("Token : " + token);
+
 // Variables globales 
 let worksResponse = [];
 let modal = null;
@@ -14,6 +18,7 @@ const worksFetch = async () => {
 
 const displayWorks = (worksResponse) => {
     console.log("fonction displayWorks se lance");
+    document.querySelector(".portfolio__gallery").innerHTML = "";
     worksResponse.forEach(work => {
         const structure = `
         <figure>
@@ -30,7 +35,7 @@ const showWorksModal = () => {
     const returnArrow = windowmodal.querySelector(".fa-arrow-left") // Sélection de la flèche retour gauche
     const firstModal = windowmodal.querySelector(".modal__workslist"); // Sélection de la première modale
     const secondModal = windowmodal.querySelector(".modal__addwork"); // Sélection de la deuxième modale
-    
+
     console.log("Fonction showWorksModal se lance");
     returnArrow.classList.add("hide_element"); // Masque la flèche gauche
     firstModal.classList.remove("hide_element"); // Affiche la première modale
@@ -42,7 +47,7 @@ const showAddWorkModal = () => {
     const returnArrow = windowmodal.querySelector(".fa-arrow-left") // Sélection de la flèche retour gauche
     const firstModal = windowmodal.querySelector(".modal__workslist"); // Sélection de la première modale
     const secondModal = windowmodal.querySelector(".modal__addwork"); // Sélection de la deuxième modale
-    
+
     console.log("Fonction showAddWorkModal se lance");
     returnArrow.classList.remove("hide_element"); // Affiche la flèche gauche
     secondModal.classList.remove("hide_element"); // Affiche la deuxième modale
@@ -125,8 +130,13 @@ const filterCategories = (categoriesResponse) => {
 }
 filterCategories(categoriesResponse);
 
-
 const windowmodal = document.getElementById("modal1"); // Sélection de la modale complète
+const returnArrow = windowmodal.querySelector(".fa-arrow-left") // Sélection de la flèche retour gauche
+returnArrow.addEventListener("click", () => { // Création d'un listener pour la flèche retour gauche
+    formReset();
+    showWorksModal();
+});
+
 const displayModal = (event) => {
     console.log("fonction displayModal se lance");
     event.preventDefault();
@@ -147,15 +157,18 @@ const displayModal = (event) => {
     // fermeture de la modale avec la touche échap
     window.addEventListener('keydown', function (event) {
         if (event.key === 'Escape' || event.key === 'Esc') {
-            closeModal(e);
+            closeModal(event);
         }
         if (event.key === 'Tab' && modal !== null) {
             focusInModal(event);
         }
     });
 
-    const modalButton = windowmodal.querySelector(".modal_button"); // Sélection du bouton "Ajouter la photo"
+    const modalButton = windowmodal.querySelector(".modal__workslist .modal__submit"); // Sélection du bouton "Ajouter une photo"
     modalButton.addEventListener("click", showAddWorkModal);
+
+    const body = document.querySelector("body");
+    body.classList.add("stop-scrolling"); // Empeche le scroll quand la modale est ouverte
 
 }
 
@@ -172,8 +185,93 @@ const closeModal = (event) => {
     modal.querySelector(".js-modal-close").removeEventListener("click", closeModal);
     modal.querySelector(".js-modal-stop").removeEventListener("click", stopPropagation);
     modal = null;
+
+    const body = document.querySelector("body");
+    body.classList.remove("stop-scrolling"); // Permet le scroll quand la modale est fermée
+
     showWorksModal();
     displayWorks(worksResponse);
+}
+
+const form = windowmodal.querySelector(".modal__form"); // Sélection du formulaire de la modale
+const addWorkModal = () => {
+    console.log("fonction addWorkModal se lance");
+
+    document.querySelector(".js-modal-close").addEventListener("click", closeModal);
+
+    const inputFile = document.getElementById("importPicture");
+    const preview = document.querySelector(".modal__newimg");
+
+    inputFile.addEventListener("change", () => {
+        const file = inputFile.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                preview.src = event.target.result;
+                preview.classList.remove("hide_element");
+                document.querySelector(".modal__importimg").classList.add("hide_element");
+            }
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = "";
+        }
+
+    })
+
+    const modalForm = document.querySelector(".modal__form");
+    if (modalForm) {
+        modalForm.addEventListener("submit", (event) => addWork(event, inputFile));
+
+    } else {
+        console.log(".modal_form n'a pas été trouvé");
+    }
+}
+
+const addWork = async (event, inputFile) => {
+    console.log("fonction addWork se lance");
+
+    event.preventDefault();
+    try {
+        if (inputFile.files.length > 0) {       // Vérifie si un fichier a été sélectionné
+            const file = inputFile.files[0];
+            const fileSize = file.size;         // Récupération taille du fichier en octets
+            const maxSize = 4 * 1024 * 1024;    // Taille max autorisée en octets (4Mo)
+            if (fileSize > maxSize) {
+                const image = document.querySelector(".modal__newimg");
+                const importimg = document.querySelector(".modal__importimg");
+                event.preventDefault();         // Empêche envoi du formulaire
+                alert("Fichier trop volumineux (4Mo maximum)");     // Affiche une erreur
+                image.src = "";                         // Efface l'image
+                image.classList.add("hide_element");    // Cache l'aperçu de l'image
+                importimg.classList.remove("hide_element"); // Affiche le bouton "+ Ajouter photo"
+                return;
+            } else {
+                console.log("Taille du fichier : " + fileSize + " octets");
+                console.log("Taille max autorisée : " + maxSize + " octets");
+                console.log("Fichier valide");
+
+                const formData = new FormData(form);
+                const response = await fetch("http://localhost:5678/api/works", {
+                    method: "POST",
+                    headers: {
+                        "Authorization": `Bearer ${token}`,
+                    },
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                } else {
+                    console.log("Projet ajouté");
+                    formReset();
+                    init().then(() => closeModal(event));
+                }
+            }
+        }
+
+    } catch (error) {
+        console.error("Erreur lors de l'ajout du travail:", error);
+    }
 }
 
 const stopPropagation = (event) => {
@@ -181,7 +279,6 @@ const stopPropagation = (event) => {
 }
 
 const formReset = () => {
-    const form = windowmodal.querySelector(".modal__form"); // Sélection du formulaire de la modale
     form.reset();
     document.querySelector(".modal__newimg").src = "";
     document.querySelector(".modal__newimg").classList.add("hide_element");
@@ -190,3 +287,5 @@ const formReset = () => {
 
 const listenerElement = document.querySelector(".portfolio__editbutton");
 listenerElement.addEventListener("click", displayModal);
+
+addWorkModal();

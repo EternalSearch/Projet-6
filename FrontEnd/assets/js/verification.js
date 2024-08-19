@@ -1,9 +1,6 @@
 // Si token existe dans local storage alors affiche logout
 const loginElement = document.querySelector(".js-navlogin")
 if (window.localStorage.getItem("token")) { // Si token trouvé
-    console.log("Le token existe");
-    
-
     loginElement.innerText = "logout";
     loginElement.addEventListener("click", () => {
         window.localStorage.removeItem("token")
@@ -18,8 +15,6 @@ if (window.localStorage.getItem("token")) { // Si token trouvé
     iconProject.classList.remove("hide_element"); // Affiche l'élément icon_project
 
 } else {
-    console.log("[X] Le token n'existe pas");
-
     loginElement.innerText = "login"
     const link = document.querySelector(".navbar__link");
     link.href = "../login.html";

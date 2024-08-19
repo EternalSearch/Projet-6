@@ -170,6 +170,10 @@ html .hide_element {
 	display: none;
 }
 
+html .stop-scrolling {
+	overflow: hidden;
+}
+
 .bold-font {
 	font-weight: bold;
 }
@@ -318,7 +322,7 @@ li:hover {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		margin-bottom: 1em;
+		margin-bottom: 3em;
 
 		& h2 {
 			margin-right: 20px;
@@ -365,6 +369,7 @@ li:hover {
 	& img {
 		width: 100%;
 		height: 407px;
+		object-fit: cover;
 	}
 }
 
@@ -491,18 +496,21 @@ html .show_modal {
 	display: flex;
 }
 
+.modal * {
+	background: white;
+}
 .modal {
 	display: none;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
+	bottom: 0;
 	background-color: rgba(0, 0, 0, 0.3);
 	width: 100%;
 	height: 100%;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-
 	&__container {
 		width: 630px;
 		background-color: white;
@@ -513,13 +521,11 @@ html .show_modal {
 		box-sizing: border-box;
 		align-items: center;
 	}
-
 	&__icons {
 		display: flex;
 		flex-direction: row-reverse;
 		width: 100%;
 	}
-
 	&__workslist,
 	&__addwork {
 		display: flex;
@@ -528,20 +534,20 @@ html .show_modal {
 		gap: 25px;
 		align-items: center;
 	}
-
+	&__addwork {
+		background: white;
+	}
 	&__title {
 		font-family: "Work Sans";
 		font-size: 26px;
 		font-weight: 400;
 		color: black
 	}
-
 	&__gallery {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 15px 5px;
 		max-width: 402px;
-
 		& .fa-trash-can {
 			position: absolute;
 			right: 5px;
@@ -550,9 +556,13 @@ html .show_modal {
 			background-color: black;
 			padding: 4px;
 			z-index: 10;
+			border-radius: 2px;
+		}
+		& img {
+			object-fit: cover;
+			width: 76px;
 		}
 	}
-
 	&__img {
 		position: relative;
 		z-index: 0;
@@ -560,10 +570,89 @@ html .show_modal {
 		flex-direction: row;
 		height: 102px;
 	}
-
 	&__separator {
 		border-top: solid 1px rgba(179, 179, 179, 1);
 		width: 100%;
 	}
+	&__import-container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 169px;
+		padding: 15px;
+		border-radius: 3px;
+	}
+	&__import-container * {
+		background-color: #E8F1F6;
+	}
+	&__importimg {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 170px;
+	}
+	&__importlabel {
+		background: #CBD6DC;
+		width: 173px;
+		height: 36px;
+		border-radius: 50px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 10px 0;
+	}
+	&__newimg {
+		height: inherit;
+	}
+	& .fa-image {
+		align-items: center;
+		font-size: 70px;
+		color: #B9C5CC;
+	}
+	&__icons {
+		width: 100%;
+		display: flex;
+		flex-direction: row-reverse;
+		justify-content: space-between;
+	}
+	&__form {
+		display: flex;
+		gap: 25px;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		width: 420px;
+	}
+	&__inputcontainer {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		width: 100%;
+	}
+	&__input {
+		box-shadow: 0px 4px 14px 0px #00000017;
+		border: none;
+		width: 100%;
+		height: 51px;
+		box-sizing: border-box;
+		font-size: 1,2em;
+	}
+}
+.modal_form__label {
+	font-family: "Work Sans";
+	font-size: 14px;
+	font-weight: 500;
+}
 
+.modal_form__input {
+	box-shadow: 0px 4px 14px 0px #00000017;
+	border: none;
+	width: 100%;
+	height: 51px;
+	box-sizing: border-box;
+	font-size: 1,2em;
 }
