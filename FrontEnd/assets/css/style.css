@@ -338,14 +338,13 @@ li:hover {
   background-color: #1D6154;
 }
 
-.gallery {
+.portfolio__gallery {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-column-gap: 20px;
   grid-row-gap: 20px;
 }
-
-.gallery img {
+.portfolio__gallery img {
   width: 100%;
   height: 407px;
 }
@@ -395,6 +394,9 @@ input[type=submit] {
   margin: 2em auto;
   text-align: center;
   border-radius: 60px;
+  border: none;
+  height: 36px;
+  padding: 5px 40px;
 }
 
 footer {
@@ -448,9 +450,80 @@ footer nav ul li {
 }
 .login__submit {
   padding: 10px 50px;
-  border: none;
 }
 .login p {
   text-decoration: underline;
   margin-top: 0px;
+}
+
+/* Modal */
+html .show_modal {
+  display: flex;
+}
+
+.modal {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.modal__container {
+  width: 630px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  padding: 20px 20px;
+  box-sizing: border-box;
+  align-items: center;
+}
+.modal__icons {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+}
+.modal__workslist, .modal__addwork {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  gap: 25px;
+  align-items: center;
+}
+.modal__title {
+  font-family: "Work Sans";
+  font-size: 26px;
+  font-weight: 400;
+  color: black;
+}
+.modal__gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px 5px;
+  max-width: 402px;
+}
+.modal__gallery .fa-trash-can {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  color: white;
+  background-color: black;
+  padding: 4px;
+  z-index: 10;
+}
+.modal__img {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  flex-direction: row;
+  height: 102px;
+}
+.modal__separator {
+  border-top: solid 1px rgb(179, 179, 179);
+  width: 100%;
 }/*# sourceMappingURL=style.css.map */

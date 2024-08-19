@@ -319,6 +319,7 @@ li:hover {
 		align-items: center;
 		justify-content: center;
 		margin-bottom: 1em;
+
 		& h2 {
 			margin-right: 20px;
 			margin-bottom: 0;
@@ -355,16 +356,16 @@ li:hover {
 	}
 }
 
-.gallery {
+.portfolio__gallery {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
-}
 
-.gallery img {
-	width: 100%;
-	height: 407px;
+	& img {
+		width: 100%;
+		height: 407px;
+	}
 }
 
 #contact {
@@ -413,6 +414,9 @@ input[type="submit"] {
 	margin: 2em auto;
 	text-align: center;
 	border-radius: 60px;
+	border: none;
+	height: 36px;
+	padding: 5px 40px;
 }
 
 footer {
@@ -472,12 +476,94 @@ footer {
 
 	&__submit {
 		padding: 10px 50px;
-		border: none;
 	}
 
 	& p {
 		text-decoration: underline;
 		margin-top: 0px;
+	}
+
+}
+
+/* Modal */
+
+html .show_modal {
+	display: flex;
+}
+
+.modal {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.3);
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+
+	&__container {
+		width: 630px;
+		background-color: white;
+		display: flex;
+		flex-direction: column;
+		border-radius: 10px;
+		padding: 20px 20px;
+		box-sizing: border-box;
+		align-items: center;
+	}
+
+	&__icons {
+		display: flex;
+		flex-direction: row-reverse;
+		width: 100%;
+	}
+
+	&__workslist,
+	&__addwork {
+		display: flex;
+		flex-direction: column;
+		box-sizing: border-box;
+		gap: 25px;
+		align-items: center;
+	}
+
+	&__title {
+		font-family: "Work Sans";
+		font-size: 26px;
+		font-weight: 400;
+		color: black
+	}
+
+	&__gallery {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 15px 5px;
+		max-width: 402px;
+
+		& .fa-trash-can {
+			position: absolute;
+			right: 5px;
+			top: 5px;
+			color: white;
+			background-color: black;
+			padding: 4px;
+			z-index: 10;
+		}
+	}
+
+	&__img {
+		position: relative;
+		z-index: 0;
+		display: flex;
+		flex-direction: row;
+		height: 102px;
+	}
+
+	&__separator {
+		border-top: solid 1px rgba(179, 179, 179, 1);
+		width: 100%;
 	}
 
 }

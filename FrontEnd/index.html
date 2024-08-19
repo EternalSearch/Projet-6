@@ -19,6 +19,7 @@
 </head>
 
 <body>
+
 	<header class="site-header">
 		<div class="topbar hide_element">
 			<div class="topbar__container">
@@ -40,6 +41,7 @@
 			</nav>
 		</div>
 	</header>
+
 	<main>
 		<section id="introduction">
 			<figure>
@@ -65,7 +67,7 @@
 				</div>
 			</div>
 			<div class="portfolio__filterbar"></div>
-			<div class="gallery">
+			<div class="portfolio__gallery">
 			</div>
 		</section>
 		<section id="contact">
@@ -90,6 +92,49 @@
 			</ul>
 		</nav>
 	</footer>
+
+	<aside id="modal1" class="modal" aria-hidden=true role="dialog" aria-labelledby="title_modal">
+		<div class="modal__container js-modal-stop">
+			<div class="modal__icons">
+				<i class="fa-solid fa-xmark js-modal-close"></i>
+				<i class="fa-solid fa-arrow-left hide_element"></i>
+			</div>
+			<div class="modal__workslist">
+				<h2 class="modal__title">Galerie photo</h1>
+				<div class="modal__gallery"></div>
+				<div class="modal__separator"></div>
+				<input type="submit" class="modal__submit" value="Ajouter une photo">
+			</div>
+			<div class="modal__addwork hide_element">
+				<h1 class="modal__title">Ajout photo</h1>
+				<form class="modal__form" action="#" method="post">
+					<div class="modal__import-container">
+						<img class="hide_element modal__newimg" src="" alt="Aperçu image envoyée">
+						<div class="modal__importimg">
+							<i class="fa-regular fa-image"></i>
+							<label for="importPicture">+ Ajouter photo</label>
+							<input name="image" class="hide_element" type="file" id="importPicture" accept="image/*"
+								required>
+							<p class="formats"> jpg, png : 4mo max</p>
+						</div>
+					</div>
+					<div class="modal__inputcontainer">
+						<label class="modal__label" for="title">Titre</label>
+						<input class="modal__input" type="text" name="title" id="title"
+							placeholder="Titre du projet" required>
+					</div>
+					<div class="modal__inputcontainer">
+						<label class="modal__label" for="category">Catégorie</label>
+						<select class="modal__input" name="category" id="category" required></select>
+					</div>
+					<div class="modal__separator"></div>
+					<input class="modal_button" type="submit" value="Valider">
+				</form>
+			</div>
+		</div>
+
+	</aside>
+
 </body>
 
 </html>
