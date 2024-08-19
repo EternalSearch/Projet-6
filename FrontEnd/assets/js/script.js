@@ -274,6 +274,30 @@ const addWork = async (event, inputFile) => {
     }
 }
 
+const delWork = async (workId) => {
+    console.log("fonction delWork se lance");
+    try {
+        const response = await fetch(`http://localhost:5678/api/works/${workId}`, {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+            }
+        });
+
+        // Vérifie si la réponse est vide
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        } else {
+            console.log("Travail " + workId + " supprimé");
+            modal.querySelector(".modal__gallery").innerHTML = "";  // Vider contenu de la galerie
+            init();     // Rafraîchissement des projets (voir fonction init())
+        }
+
+    } catch (error) {
+        console.error("Erreur lors de la suppression du travail:", error);
+    }
+}
+
 const stopPropagation = (event) => {
     event.stopPropagation();
 }
