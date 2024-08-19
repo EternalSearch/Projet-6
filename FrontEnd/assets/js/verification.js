@@ -1,13 +1,8 @@
-
-
-// Si token existe ds local storage alors affiche logout
-
-
-// function connection(e) {
-    
-const loginElement = document.querySelector(".navlogin")
-
+// Si token existe dans local storage alors affiche logout
+const loginElement = document.querySelector(".js-navlogin")
 if (window.localStorage.getItem("token")) { // Si token trouvé
+    console.log("Le token existe");
+    
 
     loginElement.innerText = "logout";
     loginElement.addEventListener("click", () => {
@@ -16,17 +11,17 @@ if (window.localStorage.getItem("token")) { // Si token trouvé
         loginElement.innerText = "login";
     })
 
-    const topbar = document.querySelector(".top_bar");
+    const topbar = document.querySelector(".topbar");
     topbar.classList.remove("hide_element"); // Affiche la topbar
-    const layoutHeader = document.querySelector(".layout_header");
-    layoutHeader.classList.add("layout_header--margin"); // Place un margin-top sur le layout_header
 
-    const iconProject = document.querySelector(".icon_project");
+    const iconProject = document.querySelector(".portfolio__editbutton");
     iconProject.classList.remove("hide_element"); // Affiche l'élément icon_project
 
 } else {
+    console.log("[X] Le token n'existe pas");
+
     loginElement.innerText = "login"
-    const link = document.querySelector(".login_link");
+    const link = document.querySelector(".navbar__link");
     link.href = "../login.html";
 }
 

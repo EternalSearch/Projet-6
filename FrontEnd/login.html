@@ -16,17 +16,19 @@
 
 <body>
 	<header class="site-header">
-		<a href="./index.html" class="site-header__logo">
-			<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-		</a>
-		<nav class="navbar">
-			<ul>
-				<li>projets</li>
-				<li>contact</li>
-				<li>login</li>
-				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-			</ul>
-		</nav>
+		<div class="site-header__container">
+			<a href="./index.html" class="site-header__logo">
+				<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+			</a>
+			<nav class="navbar">
+				<ul>
+					<li>projets</li>
+					<li>contact</li>
+					<li>login</li>
+					<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+				</ul>
+			</nav>
+		</div>
 	</header>
 
 	<main>
@@ -35,11 +37,13 @@
 				<h2 class="login__title">Log in </h1>
 					<div class="login__group">
 						<label class="login__label" for="email">E-mail</label>
-						<input class="login__input" type="email" name="email" id="email">
+						<input class="login__input" type="email" name="email" id="email"
+							placeholder="Saisir votre e-mail">
 					</div>
 					<div class="login__group">
 						<label class="login__label" for="password">Mot de passe</label>
-						<input class="login__input" type="password" name="password" id="password">
+						<input class="login__input" type="password" name="password" id="password"
+							placeholder="Saisir votre mot de passe">
 					</div>
 					<input class="login__submit" type="submit" value="Se connecter">
 					<p>Mot de passe oublié</p>
