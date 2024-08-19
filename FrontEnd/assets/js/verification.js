@@ -4,20 +4,23 @@ if (window.localStorage.getItem("token")) { // Si token trouvé
     loginElement.innerText = "logout";
     loginElement.addEventListener("click", () => {
         window.localStorage.removeItem("token")
-        window.location.href = "../index.html";
+        window.location.href = "./index.html";
         loginElement.innerText = "login";
     })
 
     const topbar = document.querySelector(".topbar");
-    topbar.classList.remove("hide_element"); // Affiche la topbar
+    if (topbar) {
+        topbar.classList.remove("hide_element"); // Affiche la topbar
+    }
 
     const iconProject = document.querySelector(".portfolio__editbutton");
-    iconProject.classList.remove("hide_element"); // Affiche l'élément icon_project
-
+    if (iconProject) {
+        iconProject.classList.remove("hide_element"); // Affiche l'élément icon_project
+    }
 } else {
     loginElement.innerText = "login"
     const link = document.querySelector(".navbar__link");
-    link.href = "../login.html";
+    link.href = "./login.html";
 }
 
 

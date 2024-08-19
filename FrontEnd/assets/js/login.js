@@ -16,7 +16,7 @@ displayemail.addEventListener("submit", async (event) => {
     const data = await fetchlogin.json();
     if (fetchlogin.ok) {
         window.localStorage.setItem("token", data.token);
-        window.location.href = "../index.html";
+        window.location.href = "./index.html";
     } else {
         alert("E-mail et/ou mot de passe incorrect");
     }
