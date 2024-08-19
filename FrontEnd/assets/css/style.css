@@ -195,6 +195,9 @@ body {
   justify-content: space-between;
   margin: 50px 0;
 }
+.site-header a {
+  text-decoration: none;
+}
 
 .topbar {
   height: 59px;
@@ -319,6 +322,7 @@ li:hover {
 .portfolio__editbutton {
   display: flex;
   gap: 5px;
+  cursor: pointer;
 }
 .portfolio__filterbar {
   display: flex;
@@ -403,6 +407,7 @@ input[type=submit] {
   border: none;
   height: 36px;
   padding: 5px 40px;
+  cursor: pointer;
 }
 
 footer {
@@ -530,6 +535,7 @@ html .show_modal {
   padding: 4px;
   z-index: 10;
   border-radius: 2px;
+  cursor: pointer;
 }
 .modal__gallery img {
   -o-object-fit: cover;
@@ -615,17 +621,6 @@ html .show_modal {
   font-size: 1, 2em;
 }
 
-.modal_form__label {
-  font-family: "Work Sans";
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.modal_form__input {
-  box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.0901960784);
-  border: none;
-  width: 100%;
-  height: 51px;
-  box-sizing: border-box;
-  font-size: 1, 2em;
+.fa-arrow-left, .fa-xmark, .modal__importlabel {
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */
