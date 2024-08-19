@@ -15,9 +15,11 @@
 </head>
 
 <body>
-	<header>
-		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-		<nav>
+	<header class="site-header">
+		<a href="./index.html" class="site-header__logo">
+			<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+		</a>
+		<nav class="navbar">
 			<ul>
 				<li>projets</li>
 				<li>contact</li>
@@ -29,21 +31,20 @@
 
 	<main>
 		<section class="login">
-			<form action="#" method="post">
-				<h1 class="log">Log in </h1>
-				<label for="email">Email</label>
-
-				<input type="email" name="email" id="email">
-
-				<label for="password">mot de passe</label>
-
-				<input type="password" name="password" id="password">
-
-
-				<input type="submit" value="Se connecter">
+			<form class="login__form" action="#" method="post">
+				<h2 class="login__title">Log in </h1>
+					<div class="login__group">
+						<label class="login__label" for="email">E-mail</label>
+						<input class="login__input" type="email" name="email" id="email">
+					</div>
+					<div class="login__group">
+						<label class="login__label" for="password">Mot de passe</label>
+						<input class="login__input" type="password" name="password" id="password">
+					</div>
+					<input class="login__submit" type="submit" value="Se connecter">
+					<p>Mot de passe oublié</p>
 			</form>
 
-			<p>Mot de passe oublié</p>
 		</section>
 	</main>
 	<footer>

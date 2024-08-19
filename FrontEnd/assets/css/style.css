@@ -2,19 +2,87 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -25,25 +93,64 @@ time, mark, audio, video {
 }
 
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
   display: block;
 }
 
+html {
+  min-height: 100vh;
+}
+
+html,
 body {
+  height: 100%;
+}
+
+main {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   line-height: 1;
 }
 
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
 
-blockquote, q {
+blockquote,
+q {
   quotes: none;
 }
 
-blockquote:before, blockquote:after,
-q:before, q:after {
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
   content: "";
   content: none;
 }
@@ -54,17 +161,60 @@ table {
 }
 
 /** end reset css**/
+/** index **/
+html .hide_element {
+  display: none;
+}
+
+.bold-font {
+  font-weight: bold;
+}
+
 body {
-  max-width: 1140px;
-  margin: auto;
   font-family: "Work Sans";
   font-size: 14px;
 }
 
-header {
+.site-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.site-header__logo {
+  text-decoration: none;
+}
+.site-header__container {
+  width: 100%;
+  max-width: 1140px;
   display: flex;
   justify-content: space-between;
   margin: 50px 0;
+}
+
+.topbar {
+  height: 59px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: black;
+}
+.topbar__container {
+  display: flex;
+  gap: 5px;
+  background-color: inherit;
+}
+.topbar__txt {
+  background-color: inherit;
+  color: white;
+  font-family: "Work Sans";
+  font-weight: 400;
+  font-size: 16px;
+}
+.topbar i {
+  color: white;
+  background-color: inherit;
 }
 
 section {
@@ -102,6 +252,11 @@ nav ul {
 nav li {
   padding: 0 10px;
   font-size: 1.2em;
+}
+
+.navbar__link {
+  text-decoration: none;
+  color: inherit;
 }
 
 li:hover {
@@ -145,9 +300,22 @@ li:hover {
 
 #portfolio h2 {
   text-align: center;
-  margin-bottom: 1em;
 }
 
+.portfolio__titlegroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+.portfolio__titlegroup h2 {
+  margin-right: 20px;
+  margin-bottom: 0;
+}
+.portfolio__editbutton {
+  display: flex;
+  gap: 5px;
+}
 .portfolio__filterbar {
   display: flex;
   width: 100%;
@@ -155,7 +323,6 @@ li:hover {
   gap: 10px;
   margin: 10px 0 40px 0;
 }
-
 .portfolio__filterbutton {
   font-family: "Syne";
   font-weight: 700;
@@ -166,7 +333,6 @@ li:hover {
   color: #1D6154;
   min-width: 75px;
 }
-
 .portfolio__filterbutton:hover {
   color: white;
   background-color: #1D6154;
@@ -205,6 +371,7 @@ li:hover {
 }
 
 #contact input {
+  min-width: 179px;
   height: 50px;
   font-size: 1.2em;
   border: none;
@@ -226,15 +393,23 @@ input[type=submit] {
   color: white;
   background-color: #1D6154;
   margin: 2em auto;
-  width: 180px;
   text-align: center;
   border-radius: 60px;
 }
 
+footer {
+  box-sizing: border-box;
+  width: 100%;
+}
 footer nav ul {
+  width: 100%;
+  background-color: white;
   display: flex;
   justify-content: flex-end;
-  margin: 2em;
+  padding: 2em 0;
+}
+footer nav ul li {
+  background-color: inherit;
 }
 
 /* LoginPage */
@@ -248,21 +423,33 @@ footer nav ul {
 
 .login {
   width: 100%;
-  gap: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
-.login input {
+.login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+.login__group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.login__input {
   margin-bottom: 15px;
   margin-top: 0px;
   border: none;
-  box-shadow: 0px 4px 14px #000000;
+  box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.0901960784);
   width: 379px;
   height: 51px;
 }
-
+.login__submit {
+  padding: 10px 50px;
+  border: none;
+}
 .login p {
   text-decoration: underline;
   margin-top: 0px;
