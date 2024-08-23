@@ -4,10 +4,15 @@ console.log("Token : " + token);
 
 // Variables globales 
 let worksResponse = [];
+let categoriesResponse = [];
 let modal = null;
 
-const categories = await fetch('http://localhost:5678/api/categories');
-const categoriesResponse = await categories.json();
+const categoriesFetch = async () => {
+    const categories = await fetch('http://localhost:5678/api/categories');
+    const categoriesData = await categories.json();
+    categoriesResponse = categoriesData;
+}
+categoriesFetch();
 
 const worksFetch = async () => {
     console.log("fonction worksFetch se lance");
@@ -95,7 +100,9 @@ const init = async () => {
     await worksFetch();
     displayWorks(worksResponse);
     displayWorksModal(worksResponse);
+    await categoriesFetch();
     generateSelectChoices();
+    filterCategories(categoriesResponse);
 }
 init(); // Appel de la fonction
 
@@ -122,13 +129,11 @@ const filterCategories = (categoriesResponse) => {
                 }
             });
             document.querySelector(".portfolio__gallery").innerHTML = "";
-            console.log(filteredWorks);
 
             displayWorks(filteredWorks);
         });
     }
 }
-filterCategories(categoriesResponse);
 
 const windowmodal = document.getElementById("modal1"); // Sélection de la modale complète
 const returnArrow = windowmodal.querySelector(".fa-arrow-left") // Sélection de la flèche retour gauche

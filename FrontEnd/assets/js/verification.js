@@ -1,5 +1,5 @@
 // Si token existe dans local storage alors affiche logout
-const loginElement = document.querySelector(".js-navlogin")
+const loginElement = document.querySelector(".navbar__link")
 if (window.localStorage.getItem("token")) { // Si token trouvé
     loginElement.innerText = "logout";
     loginElement.addEventListener("click", () => {
