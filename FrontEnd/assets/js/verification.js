@@ -6,6 +6,7 @@ if (window.localStorage.getItem("token")) { // Si token trouvé
         window.localStorage.removeItem("token")
         window.location.href = "./index.html";
         loginElement.innerText = "login";
+
     })
 
     const topbar = document.querySelector(".topbar");
@@ -15,8 +16,13 @@ if (window.localStorage.getItem("token")) { // Si token trouvé
 
     const iconProject = document.querySelector(".portfolio__editbutton");
     if (iconProject) {
-        iconProject.classList.remove("hide_element"); // Affiche l'élément icon_project
+        iconProject.classList.remove("hide_element");// Affiche l'élément icon_project
     }
+
+    const deleteFilterBar = document.querySelector(".portfolio__filterbar")
+    if (deleteFilterBar) {
+        deleteFilterBar.classList.add("hide_element");
+    };
 } else {
     loginElement.innerText = "login"
     const link = document.querySelector(".navbar__link");

@@ -21,3 +21,4 @@ displayemail.addEventListener("submit", async (event) => {
         alert("E-mail et/ou mot de passe incorrect");
     }
 })
+ 

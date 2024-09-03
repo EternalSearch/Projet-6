@@ -89,7 +89,7 @@ video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
-  background: #FFFEF8;
+  background: #fffef8;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -234,7 +234,7 @@ h1 {
   font-family: "Syne";
   font-size: 22px;
   font-weight: 800;
-  color: #B1663C;
+  color: #b1663c;
 }
 
 h1 > span {
@@ -247,7 +247,7 @@ h2 {
   font-family: "Syne";
   font-weight: 700;
   font-size: 30px;
-  color: #1D6154;
+  color: #1d6154;
 }
 
 nav ul {
@@ -267,7 +267,7 @@ nav li {
 }
 
 li:hover {
-  color: #B1663C;
+  color: #b1663c;
 }
 
 #introduction {
@@ -334,16 +334,16 @@ li:hover {
 .portfolio__filterbutton {
   font-family: "Syne";
   font-weight: 700;
-  border: 1px solid #1D6154;
+  border: 1px solid #1d6154;
   text-align: center;
   border-radius: 40px;
   padding: 10px;
-  color: #1D6154;
+  color: #1d6154;
   min-width: 75px;
 }
 .portfolio__filterbutton:hover {
   color: white;
-  background-color: #1D6154;
+  background-color: #1d6154;
 }
 
 .portfolio__gallery {
@@ -400,7 +400,7 @@ input[type=submit] {
   font-family: "Syne";
   font-weight: 700;
   color: white;
-  background-color: #1D6154;
+  background-color: #1d6154;
   margin: 2em auto;
   text-align: center;
   border-radius: 60px;
@@ -429,7 +429,7 @@ footer nav ul li {
 .log {
   font-family: "Syne";
   font-weight: 700;
-  color: #1D6154;
+  color: #1d6154;
   width: 100px;
   height: 36px;
 }
@@ -564,7 +564,7 @@ html .show_modal {
   border-radius: 3px;
 }
 .modal__import-container * {
-  background-color: #E8F1F6;
+  background-color: #e8f1f6;
 }
 .modal__importimg {
   display: flex;
@@ -575,7 +575,7 @@ html .show_modal {
   height: 170px;
 }
 .modal__importlabel {
-  background: #CBD6DC;
+  background: #cbd6dc;
   width: 173px;
   height: 36px;
   border-radius: 50px;
@@ -590,7 +590,7 @@ html .show_modal {
 .modal .fa-image {
   align-items: center;
   font-size: 70px;
-  color: #B9C5CC;
+  color: #b9c5cc;
 }
 .modal__icons {
   width: 100%;
@@ -618,9 +618,15 @@ html .show_modal {
   width: 100%;
   height: 51px;
   box-sizing: border-box;
-  font-size: 1.2em;
+  font-size: 1, 2em;
+}
+.modal__submit:disabled {
+  background-color: #A7A7A7;
+  cursor: not-allowed;
 }
 
-.fa-arrow-left, .fa-xmark, .modal__importlabel {
+.fa-arrow-left,
+.fa-xmark,
+.modal__importlabel {
   cursor: pointer;
 }/*# sourceMappingURL=style.css.map */
